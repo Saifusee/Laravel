@@ -1,0 +1,4 @@
+Laravel Latest version by 15August 2020
+empty project not in use 
+App name =  Laravel.
+so change the name of folder to laravel not laravel(v7.25.0)

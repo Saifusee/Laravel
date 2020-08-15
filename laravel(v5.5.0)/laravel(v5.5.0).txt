@@ -1,0 +1,3 @@
+Laravel empty project not in use 
+App name =  Laravel.
+so change the name of folder to laravel not laravel(v5.5.0)
