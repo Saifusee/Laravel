@@ -5,7 +5,7 @@
 @include('errors.error')
 
 {{-- Form Added Remember to use capital F--}}
-{!! Form::open(['action' => 'CrudsController@index']) !!}
+{!! Form::model($article = new \App\Crud, ['action' => 'CrudsController@index']) !!}
 
     @include('practice._form', ['buttontext' => 'Add Article'])
 

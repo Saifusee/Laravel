@@ -11,12 +11,12 @@
 
     <div class="form-group">
     {!! Form::label('published_at', 'Publish On:') !!}
-    {!! Form::date('published_at', Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+    {!! Form::date('published_at', $article->published_at, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('tags_list', 'Tags:') !!}
-        {!! Form::select('tags_list[]', $tags, null, ['id' => 'tag_list', 'class' => 'form-control', 'multiple']) !!}
+        {!! Form::select('tags_list[]', $tags, $article->tags, ['id' => 'tag_list', 'class' => 'form-control', 'multiple']) !!}
     </div>
 
     {{-- Form input fields:::::: Form::submit('value', ['attributes' => 'attributes value']) --}}

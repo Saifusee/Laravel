@@ -7,7 +7,7 @@
 @foreach ($article->tags as $tag)
 <br><ul style="text-align: center;
 list-style: inside">
-    <li>{{$tag->name}}</li>
+    <li><a href="{{action('TagsController@index', $tag->name)}}"> {{$tag->name}} </a></li>
 </ul>
 
 @endforeach

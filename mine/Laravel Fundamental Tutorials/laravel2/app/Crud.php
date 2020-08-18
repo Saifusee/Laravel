@@ -17,27 +17,39 @@ class Crud extends Model
 
     protected $dates = ['published_at'];
 
-    public function scopePublished($query){
-        $query->where('content', 'LIKE', '%Write%');
+    //Scope Declaration
+    public function scopePublished($query)
+    {
+        $query->where('published_at', '<=', Carbon::now());
     }
 
-
-    public function setContentAttribute($date) {
+    //Mutator to set some value before submitting them to Database
+    public function setContentAttribute($date)
+    {
         $this->attributes['content'] = 'Write whatever you want i am going to display this article content with this mutator go to hell' ;
     }
 
     //One to Many Relationship
-    public function user (){
+    public function user ()
+    {
         return $this->belongsTo('App\User');
     }
 
     //Many to Many Relationship
-    public function tags (){
-        return $this->belongsToMany('App\Tag', 'crud_tag', 'crud_id', 'tag_id')->withTimestamps();
+    public function tags ()
+    {
+        return $this->belongsToMany('App\Tag')->withTimestamps();
     }
 
     //Accessor to get tag the way we want
-    public function getTagListAttributes() {
+    public function getTagListAttribute()
+    {
        return $this->tags->pluck('id');
+    }
+
+    //Accessor to get date in the format we want
+    public function getPublishedAtAttribute($date)
+    {
+        return new Carbon($date);
     }
 }

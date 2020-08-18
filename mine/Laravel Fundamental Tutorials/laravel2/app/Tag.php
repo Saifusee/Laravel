@@ -12,6 +12,6 @@ class Tag extends Model
 
     public function articles ()
     {
-        return $this->belongsToMany('App\Crud', 'crud_tag', 'crud_id', 'tag_id')->withTimestamps();
+        return $this->belongsToMany('App\Crud')->withTimestamps();
     }
 }

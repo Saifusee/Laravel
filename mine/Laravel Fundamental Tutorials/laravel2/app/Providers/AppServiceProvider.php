@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 use App\Crud;
+use App\Tag;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Route::bind('article', function($id)
+        {
+            return Crud::published()->findOrFail($id);
+        });
+
+        \Route::bind('tag', function($name)
+        {
+            return Tag::where('name', $name)->firstOrFail();
+        });
     }
 }
